@@ -64,8 +64,9 @@ async function relay(request) {
     init.body = request.body;
   }
 
+  // Keep streaming requests alive while upstream generates a response.
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 25_000);
+  const timer = setTimeout(() => controller.abort(), 120_000);
 
   try {
     const upstream = await fetch(targetUrl, { ...init, signal: controller.signal });

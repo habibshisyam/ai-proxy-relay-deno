@@ -32,4 +32,4 @@ curl -i "https://<project>.deno.dev/" -H "x-relay-target: https://httpbin.org" -
 curl -i "https://<project>.deno.dev/" -H "x-relay-target: https://api.deepseek.com" -H "x-relay-path: /v1/models"
 ```
 
-Health shim `200` berarti lulus. `401` dari DeepSeek berarti relay tembus dan provider meminta API key.
+Health shim `200` berarti lulus. `401` dari DeepSeek berarti relay tembus dan provider meminta API key. Upstream timeout guard berada di 120 detik agar streaming AI tidak terputus terlalu cepat.
